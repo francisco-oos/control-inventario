@@ -1,11 +1,16 @@
 // config.js
+// --------------------------------------------------
+// Este archivo define la ruta de la base de datos.
+// Si cambias de PC, solo modifica esta ruta.
+// --------------------------------------------------
+
 import path from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Base de datos directamente en SynologyDrive
+// Ruta absoluta a la base de datos en SynologyDrive
 export const DB_PATH = path.join(
   "C:",
   "Users",
