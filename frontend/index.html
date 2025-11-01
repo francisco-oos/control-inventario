@@ -1,30 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tecnologías</title>
-  <style>
-    body { font-family: Arial; background: #f4f4f4; padding: 20px; }
-    h1 { text-align: center; }
-    table { width: 100%; border-collapse: collapse; background: white; }
-    th, td { border: 1px solid #ccc; padding: 8px; }
-    th { background: #333; color: white; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Control de Inventario</title>
+
+<!-- Estilos -->
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/tabs.css">
 </head>
+
 <body>
-  <h1>Listado de Tecnologías</h1>
-  <table>
-    <thead>
-      <tr><th>ID</th><th>Nombre</th></tr>
-    </thead>
-    <tbody id="tbody-tecnologias"></tbody>
-  </table>
+<header>CONTROL DE INVENTARIO</header>
 
-  <p style="text-align:center; margin-top:20px;">
-    <a href="nodos.html">Ver nodos</a>
-  </p>
+<main>
+  <!-- MENU LATERAL -->
+  <aside>
+    <ul>
+      <li>
+        <a class="menu-item">Material Sísmico</a>
+        <ul class="submenu">
+          <li><a href="#" data-section="incautado">Incautado</a></li>
+          <li><a href="#" data-section="mantenimiento">Mantenimiento</a></li>
+          <li><a href="#" data-section="almacenado">Almacenado</a></li>
+          <li><a href="#" data-section="general">General</a></li>
+        </ul>
+      </li>
+      <li><a href="#" data-section="estatus">Cargar Estatus</a></li>
+      <li><a href="#" data-section="reportes">Generar Reportes</a></li>
+    </ul>
+  </aside>
 
-  <script src="app.js"></script>
+  <!-- CONTENIDO -->
+  <section id="content-area">
+    <div id="placeholder">
+      <h2>Bienvenido</h2>
+      <p>Selecciona una opción del menú lateral para comenzar.</p>
+    </div>
+
+    <div id="vista-general" style="display:none;">
+      <ul id="tabs">
+        <li><a href="#" class="tab-link active" data-tab="tecnologias">Tecnologías</a></li>
+        <li><a href="#" class="tab-link" data-tab="nodos">Nodos</a></li>
+      </ul>
+
+      <div id="tecnologias" class="content active">
+        <h2>Tecnologías</h2>
+        <p>Aquí puedes aplicar tus filtros y modificar el estatus.</p>
+        <div id="tabla-tecnologias"></div>
+      </div>
+
+      <div id="nodos" class="content">
+        <h2>Nodos</h2>
+        <div id="tabla-nodos"></div>
+      </div>
+    </div>
+
+    <div id="vista-incautado" style="display:none;">
+      <h2>Material Incautado</h2>
+      <p>Contenido pendiente de construcción.</p>
+    </div>
+
+    <div id="vista-mantenimiento" style="display:none;">
+      <h2>Mantenimiento</h2>
+      <p>Contenido pendiente de construcción.</p>
+    </div>
+
+    <div id="vista-almacenado" style="display:none;">
+      <h2>Almacenado</h2>
+      <p>Contenido pendiente de construcción.</p>
+    </div>
+
+    <div id="vista-estatus" style="display:none;">
+      <h2>Cargar Estatus</h2>
+      <p>Contenido pendiente de construcción.</p>
+    </div>
+
+    <div id="vista-reportes" style="display:none;">
+      <h2>Generar Reportes</h2>
+      <p>Contenido pendiente de construcción.</p>
+    </div>
+  </section>
+</main>
+
+<footer>© 2025 - Sistema de Control de Material</footer>
+
+<!-- Librerías -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Scripts -->
+<script src="js/sidebar.js"></script>
+<script src="js/tabs.js"></script>
+<script src="js/dataHandler.js"></script>
+<script src="js/nodosHandler.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
+

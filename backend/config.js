@@ -12,7 +12,9 @@ const __dirname = path.dirname(__filename);
 
 // Ruta absoluta a la base de datos en SynologyDrive
 export const DB_PATH = path.join(
-  "C:",
+  //COMPUTADORA MISAEL 
+
+/* "C:",
   "Users",
   "Control de Material",
   "Documents",
@@ -20,4 +22,14 @@ export const DB_PATH = path.join(
   "SynologyDrive",
   "control-inventario",
   "control_inventario.db"
+*/
+//COMPUTADORA EDUARDO
+"C:",
+"Users",
+"Control de Material",
+"Documents",
+"dev-Francisco",
+"SynologyDrive",
+"SynologyDrive",
+"control_inventario.db"
 );
