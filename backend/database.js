@@ -58,7 +58,7 @@ function inicializarTablas() {
 function verificarColumnaEstatus() {
   db.all("PRAGMA table_info(nodos);", (err, columns) => {
     if (err) {
-      console.error("❌ Error al obtener columnas de 'nodos':", err.message);
+      console.error(" Error al obtener columnas de 'nodos':", err.message);
       return;
     }
 
@@ -69,9 +69,9 @@ function verificarColumnaEstatus() {
         "ALTER TABLE nodos ADD COLUMN estatus TEXT DEFAULT 'Operativo';",
         (err) => {
           if (err) {
-            console.error("❌ Error al agregar columna 'estatus':", err.message);
+            console.error(" Error al agregar columna 'estatus':", err.message);
           } else {
-            console.log("✅ Columna 'estatus' agregada correctamente.");
+            console.log(" Columna 'estatus' agregada correctamente.");
           }
         }
       );
@@ -95,7 +95,7 @@ function insertarTecnologiasBase() {
       [nombre],
       (err) => {
         if (err) {
-          console.error("❌ Error al insertar tecnología:", err.message);
+          console.error(" Error al insertar tecnología:", err.message);
         }
       }
     );

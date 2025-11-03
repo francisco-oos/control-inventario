@@ -15,30 +15,53 @@
 <header>CONTROL DE INVENTARIO</header>
 
 <main>
-  <!-- MENU LATERAL -->
+  <!-- ==========================================================
+       MENÚ LATERAL
+       ========================================================== -->
   <aside>
     <ul>
       <li>
         <a class="menu-item">Material Sísmico</a>
         <ul class="submenu">
+          <!-- Sección: Incautado -->
           <li><a href="#" data-section="incautado">Incautado</a></li>
-          <li><a href="#" data-section="mantenimiento">Mantenimiento</a></li>
+
+          <!-- Submenú: Mantenimiento -->
+          <li>
+            <a class="menu-item">Mantenimiento</a>
+            <ul class="submenu">
+              <li><a href="#" data-section="actualizar-nodos">Actualizar nodos</a></li>
+              <li><a href="#" data-section="ver-mantenimiento">Ver mantenimiento</a></li>
+            </ul>
+          </li>
+
+          <!-- Sección: Almacenado -->
           <li><a href="#" data-section="almacenado">Almacenado</a></li>
+
+          <!-- Sección: General -->
           <li><a href="#" data-section="general">General</a></li>
+
+          <!-- NUEVA SECCIÓN: Cargar Estatus (genérico para cualquier tipo) -->
+          <li><a href="#" data-section="estatus">Cargar Estatus (CSV)</a></li>
         </ul>
       </li>
-      <li><a href="#" data-section="estatus">Cargar Estatus</a></li>
+
+      <!-- Reportes -->
       <li><a href="#" data-section="reportes">Generar Reportes</a></li>
     </ul>
   </aside>
 
-  <!-- CONTENIDO -->
+  <!-- ==========================================================
+       CONTENIDO PRINCIPAL
+       ========================================================== -->
   <section id="content-area">
+    <!-- Pantalla de bienvenida -->
     <div id="placeholder">
       <h2>Bienvenido</h2>
       <p>Selecciona una opción del menú lateral para comenzar.</p>
     </div>
 
+    <!-- Vista general (Tecnologías y Nodos) -->
     <div id="vista-general" style="display:none;">
       <ul id="tabs">
         <li><a href="#" class="tab-link active" data-tab="tecnologias">Tecnologías</a></li>
@@ -57,26 +80,67 @@
       </div>
     </div>
 
+    <!-- Vista: Material Incautado -->
     <div id="vista-incautado" style="display:none;">
       <h2>Material Incautado</h2>
       <p>Contenido pendiente de construcción.</p>
     </div>
 
-    <div id="vista-mantenimiento" style="display:none;">
-      <h2>Mantenimiento</h2>
-      <p>Contenido pendiente de construcción.</p>
+    <!-- Vista: Actualizar Nodos -->
+    <div id="vista-actualizar-nodos" style="display:none;">
+      <h2>Actualizar Nodos</h2>
+      <p>Sube un archivo CSV para actualizar los nodos en mantenimiento.</p>
+
+      <form id="form-csv" enctype="multipart/form-data">
+        <input type="file" id="csvFile" accept=".csv" required>
+        <button type="submit">Cargar CSV</button>
+      </form>
+
+      <div id="csv-preview" style="margin-top:20px; display:none;">
+        <h3>Vista previa del archivo:</h3>
+        <table id="tabla-preview" border="1" cellpadding="5">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+        <button id="btn-enviar-csv" style="margin-top:10px;">Actualizar Base de Datos</button>
+      </div>
     </div>
 
+    <!-- Vista: Ver Mantenimiento -->
+    <div id="vista-ver-mantenimiento" style="display:none;">
+      <h2>Ver Mantenimiento</h2>
+      <label for="fecha-inicio">Fecha inicio:</label>
+      <input type="date" id="fecha-inicio">
+      <label for="fecha-fin">Fecha fin:</label>
+      <input type="date" id="fecha-fin">
+      <button id="btn-filtrar-mantenimiento">Filtrar</button>
+
+      <table id="tabla-mantenimiento" border="1" cellpadding="5" style="margin-top:10px; width:100%;">
+        <thead>
+          <tr>
+            <th>Serie</th>
+            <th>Tecnología</th>
+            <th>Fecha ingreso</th>
+            <th>Días en mantenimiento</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Vista: Almacenado -->
     <div id="vista-almacenado" style="display:none;">
       <h2>Almacenado</h2>
       <p>Contenido pendiente de construcción.</p>
     </div>
 
+    <!-- NUEVA Vista: Cargar Estatus genérico -->
     <div id="vista-estatus" style="display:none;">
-      <h2>Cargar Estatus</h2>
-      <p>Contenido pendiente de construcción.</p>
+      <h2>Cargar Estatus (CSV)</h2>
+      <!-- Aquí se genera dinámicamente el formulario con cargarEstatus.js -->
     </div>
 
+    <!-- Vista: Reportes -->
     <div id="vista-reportes" style="display:none;">
       <h2>Generar Reportes</h2>
       <p>Contenido pendiente de construcción.</p>
@@ -86,14 +150,23 @@
 
 <footer>© 2025 - Sistema de Control de Material</footer>
 
-<!-- Librerías -->
+<!-- ==========================================================
+     LIBRERÍAS Y SCRIPTS
+     ========================================================== -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Scripts -->
+<!-- Scripts del sistema -->
 <script src="js/sidebar.js"></script>
 <script src="js/tabs.js"></script>
 <script src="js/dataHandler.js"></script>
 <script src="js/nodosHandler.js"></script>
 <script src="js/main.js"></script>
+
+<!-- Nuevo script de carga de estatus -->
+<script src="js/cargarEstatus.js"></script>
+
+<!-- Vista: Mantenimiento -->
+<script src="js/verMantenimiento.js"></script>
+
 </body>
 </html>
