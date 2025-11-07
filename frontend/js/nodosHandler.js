@@ -2,6 +2,9 @@
 // nodosHandler.js
 // Manejo de Nodos (filtros, paginación, actualización)
 // ===============================
+// nodosHandler.js
+// Manejo de Nodos (filtros, paginación, actualización)
+// ===============================
 const API_NODOS = "http://localhost:3001/api/nodos";
 
 let currentPage = 1;
@@ -100,3 +103,4 @@ function aplicarFiltros() {
   currentPage = 1;
   cargarNodos();
 }
+

@@ -5,8 +5,11 @@ import db from './database.js';
 import path from 'path';
 
 const CSV_FILE_PATH = path.join(
-  'C:', 'Users', 'Control de Material', 'Documents',
-  'BASE DE DATOS', 'SynologyDrive', 'control-inventario', 'base_series.csv'
+  //computadora eduardo
+    'C:','Users','Control de Material','Documents','dev-Francisco','SynologyDrive','SynologyDrive', 'base_series.csv'
+//computadora mizael
+  /*'C:', 'Users', 'Control de Material', 'Documents',
+  'BASE DE DATOS', 'SynologyDrive', 'control-inventario', 'base_series.csv'*/
 );
 
 function cargarSeries() {
