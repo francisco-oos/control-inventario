@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Inventario</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/tabs.css">
+</head>
+
+<body>
+<header>CONTROL DE INVENTARIO</header>
+
+<main>
+  <!-- ==========================================================
+       MENÚ LATERAL
+       ========================================================== -->
+  <aside>
+    <ul>
+      <li>
+        <a class="menu-item">Material Sísmico</a>
+        <ul class="submenu">
+          <li><a href="#" data-section="incautado">Incautado</a></li>
+          <li>
+            <a class="menu-item">Mantenimiento</a>
+            <ul class="submenu">
+              <li><a href="#" data-section="actualizar-nodos">Actualizar nodos</a></li>
+              <li><a href="#" data-section="ver-mantenimiento">Ver mantenimiento</a></li>
+            </ul>
+          </li>
+          <li><a href="#" data-section="almacenado">Almacenado</a></li>
+          <li><a href="#" data-section="general">General</a></li>
+          <li><a href="#" data-section="estatus">Cargar Estatus (CSV)</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#" data-section="reportes">Generar Reportes</a></li>
+      <li><a href="#" data-section="gestion-equipos">Gestión de Equipos</a></li>
+      <li><a href="#" data-section="agregar-equipos">Agregar Equipos</a></li>
+    </ul>
+  </aside>
+
+  <!-- ==========================================================
+       CONTENIDO PRINCIPAL
+       ========================================================== -->
+  <section id="content-area">
+
+    <!-- Vista de bienvenida -->
+    <div id="placeholder">
+      <h2>Bienvenido</h2>
+      <p>Selecciona una opción del menú lateral para comenzar.</p>
+    </div>
+
+    <!-- Vista general -->
+    <div id="vista-general" style="display:none;">
+      <ul id="tabs">
+        <li><a href="#" class="tab-link active" data-tab="tecnologias">Tecnologías</a></li>
+        <li><a href="#" class="tab-link" data-tab="nodos">Nodos</a></li>
+      </ul>
+
+      <div id="tecnologias" class="content active">
+        <h2>Tecnologías</h2>
+        <div id="tabla-tecnologias"></div>
+      </div>
+
+      <div id="nodos" class="content">
+        <h2>Nodos</h2>
+        <div id="tabla-nodos"></div>
+      </div>
+    </div>
+
+    <!-- Vista: Material Incautado -->
+    <div id="vista-incautado" style="display:none;">
+      <h2>Material Incautado</h2>
+      <p>Contenido pendiente de construcción.</p>
+    </div>
+
+    <!-- Vista: Actualizar Nodos -->
+    <div id="vista-actualizar-nodos" style="display:none;">
+      <h2>Actualizar Nodos</h2>
+      <form id="form-csv" enctype="multipart/form-data">
+        <input type="file" id="csvFile" accept=".csv" required>
+        <button type="submit">Cargar CSV</button>
+      </form>
+      <div id="csv-preview" style="margin-top:20px; display:none;">
+        <h3>Vista previa del archivo:</h3>
+        <table id="tabla-preview" border="1" cellpadding="5">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+        <button id="btn-enviar-csv" style="margin-top:10px;">Actualizar Base de Datos</button>
+      </div>
+    </div>
+
+    <!-- Vista: Ver Mantenimiento -->
+    <div id="vista-ver-mantenimiento" style="display:none;">
+      <h2>Ver Mantenimiento</h2>
+      <label for="fecha-inicio">Fecha inicio:</label>
+      <input type="date" id="fecha-inicio">
+      <label for="fecha-fin">Fecha fin:</label>
+      <input type="date" id="fecha-fin">
+      <button id="btn-filtrar-mantenimiento">Filtrar</button>
+      <table id="tabla-mantenimiento" border="1" cellpadding="5" style="margin-top:10px; width:100%;">
+        <thead>
+          <tr>
+            <th>Serie</th>
+            <th>Tecnología</th>
+            <th>Fecha ingreso</th>
+            <th>Días en mantenimiento</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Vista: Almacenado -->
+    <div id="vista-almacenado" style="display:none;">
+      <h2>Almacenado</h2>
+      <p>Contenido pendiente de construcción.</p>
+    </div>
+
+    <!-- Vista: Cargar Estatus -->
+    <div id="vista-estatus" style="display:none;">
+      <h2>Cargar Estatus (CSV)</h2>
+      <!-- contenido generado dinámicamente -->
+    </div>
+
+    <!-- Vista: Gestión de Equipos -->
+    <div id="vista-gestion-equipos" style="display:none;">
+      <h2>Gestión de Equipos</h2>
+      <div id="filtroEquipos">
+        <label for="tipoEquipo">Filtrar por tipo de equipo:</label>
+        <select id="tipoEquipo" name="tipoEquipo">
+          <option value="">Seleccionar Tipo</option>
+          <option value="telefonos">Teléfonos</option>
+          <option value="chips_telefono">Chips</option>
+          <option value="radios_handy">Radios Handy</option>
+        </select>
+        <button id="btnFiltrarEquipos">Filtrar</button>
+      </div>
+
+      <div id="detallesEquipo" style="display:none;">
+        <h3>Detalles del Equipo</h3>
+        <p id="detallesNombre"></p>
+        <p id="detallesEstatus"></p>
+        <p id="detallesAsignadoA"></p>
+
+        <div id="comentariosEquipo" style="margin-top:20px;">
+          <h4>Comentarios:</h4>
+          <ul id="comentariosList"></ul>
+        </div>
+
+        <label for="nuevoComentario">Agregar Comentario:</label><br>
+        <textarea id="nuevoComentario" rows="4" cols="50"></textarea><br>
+        <button id="btnAgregarComentario">Agregar Comentario</button>
+      </div>
+    </div>
+
+    <!-- Vista: Agregar Equipos -->
+    <div id="vista-agregar-equipos" style="display:none;">
+      <h2>Agregar Equipos Manualmente</h2>
+      <form id="formAgregarEquipo">
+        <label for="tipoEquipoAgregar">Tipo de equipo:</label>
+        <select id="tipoEquipoAgregar" required>
+          <option value="">Seleccionar Tipo</option>
+          <option value="nodos">Nodos</option>
+          <option value="telefonos">Teléfonos</option>
+          <option value="chips_telefono">Chips Teléfono</option>
+          <option value="radios_handy">Radios Handy</option>
+        </select>
+        <br><br>
+        <div id="camposDinamicos"></div>
+        <button type="submit">Agregar Equipo</button>
+      </form>
+      <div id="resultadoAgregar" style="margin-top:20px;"></div>
+    </div>
+
+    <!-- Vista: Reportes -->
+    <div id="vista-reportes" style="display:none;">
+      <h2>Generar Reportes</h2>
+      <p>Contenido pendiente de construcción.</p>
+    </div>
+
+  </section>
+</main>
+
+<footer>© 2025 - Sistema de Control de Material</footer>
+
+<!-- ==========================================================
+     LIBRERÍAS Y SCRIPTS
+     ========================================================== -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Scripts del sistema -->
+ <!--<script type="module" src="config.js"></script>-->
+<script src="js/sidebar.js"></script>
+<script src="js/tabs.js"></script>
+<script src="js/dataHandler.js"></script>
+<script src="js/nodosHandler.js"></script>
+<script src="js/main.js"></script>
+<script src="js/cargarEstatus.js"></script>
+<script src="js/verMantenimiento.js"></script>
+<script src="js/gestionEquipos.js"></script>
+<script src="js/verTelefonos.js"></script>
+<script src="js/AgregarEquipo.js"></script>
+<!--<script type="module" src="js/AgregarEquipo.js"></script>-->
+
+
+</body>
+</html>
