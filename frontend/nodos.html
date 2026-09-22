@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nodos</title>
+  <style>
+    body { font-family: Arial; background: #f8f8f8; padding: 20px; }
+    h1 { text-align: center; }
+    table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background: #333; color: white; }
+    .estatus-operativo { color: green; }
+    .estatus-fuera { color: red; }
+    .filtros { text-align: center; margin-bottom: 10px; }
+    .filtros input { padding: 5px; margin-right: 5px; }
+    .paginacion { text-align: center; margin-top: 15px; }
+    .paginacion button { padding: 5px 10px; margin: 0 5px; }
+  </style>
+</head>
+<body>
+  <h1>Listado de Nodos</h1>
+
+  <!-- Controles de filtro -->
+  <div class="filtros">
+    <input id="filtro-serie" placeholder="Filtrar por serie">
+    <input id="filtro-tecnologia" placeholder="Filtrar por tecnología">
+    <button id="btn-filtrar">Aplicar filtros</button>
+  </div>
+
+  <!-- Tabla de nodos -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Serie</th>
+        <th>Tecnología</th>
+        <th>Estatus</th>
+        <th>Última Actualización</th>
+        <th>Actualizar Estatus</th>
+      </tr>
+    </thead>
+    <tbody id="tbody-nodos"></tbody>
+  </table>
+
+  <!-- Paginación -->
+  <div class="paginacion">
+    <button id="btn-anterior">Anterior</button>
+    <span id="pagina-actual"></span>
+    <button id="btn-siguiente">Siguiente</button>
+  </div>
+
+  <p style="text-align:center; margin-top:20px;">
+    <a href="index.html">Volver a tecnologías</a>
+  </p>
+
+  <script src="app_nodos.js"></script>
+</body>
+</html>

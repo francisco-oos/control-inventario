@@ -1,0 +1,30 @@
+# Dependencias reconstruibles
+node_modules/
+
+# Secretos y configuración local
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Bases y datos locales
+*.sqlite
+*.sqlite3
+*.db
+
+# Logs / SO / editores
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
